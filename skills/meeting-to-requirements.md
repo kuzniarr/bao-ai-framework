@@ -1,56 +1,83 @@
----
-name: meeting-to-requirements
-description: "Converts a meeting transcript into structured requirements. Input: transcript.md — paste or upload. Output: requirements.md in Confluence — decisions captured, action items assigned, requirements extracted and numbered by FE/BE."
----
+# /meeting-to-requirements
 
-# Meeting to Requirements
+## Purpose
 
-## What this skill does
+Convert a meeting transcript or raw session notes into structured, validated content. Extract decisions, action items, requirements, and open questions — implementation-agnostic.
 
-Takes a raw meeting transcript and extracts structured requirements from it. Separates decisions, action items, and open questions. Outputs numbered requirements ready for a Confluence page.
+## When to invoke
+
+- After a client call or stakeholder session
+- When raw notes need to be turned into actionable artifacts
+- Before adding new scope to a specification
 
 ## Input
 
-Paste the meeting transcript directly into the chat after invoking the skill.
-*Works with raw transcripts, auto-generated captions, or cleaned-up notes. The messier the input, the more the skill helps.*
+Meeting transcript or raw notes — any format:
 
-## Output structure
+- Bluedot export
+- Manually typed notes
+- Pasted chat
+- Voice memo summary
+
+Context (read automatically from Project Knowledge):
+
+- `01_project_context.md` — scope, glossary, domain terminology
+- `02_stakeholders.md` — speaker identification (if applicable)
+
+## Process
+
+1. Read the input.
+2. Categorize content into 4 sections:
+   - **Decisions** — explicit agreements made in the meeting
+   - **Action Items** — tasks with owner and due date if mentioned
+   - **Requirements** — new functional or non-functional needs surfaced
+   - **Open Questions** — items raised but not resolved
+3. For each Requirement:
+   - Write as a numbered, plain-text statement
+   - **No implementation tag** (no FE/BE/Design/etc split)
+   - Use project glossary
+   - Mark assumptions explicitly if making them
+4. Anti-hallucination:
+   - Use only what was said in the source
+   - Do not infer scope or decisions not explicitly made
+   - Mark unclear items as `TODO` or `Assumption: [details]`
+
+## Output format
 
 ### Decisions
-What was agreed during the meeting. Format: decision + who decided + date.
+
+1. [decision text]
+2. [decision text]
 
 ### Action Items
-| # | Action | Owner | Due |
-|---|---|---|---|
+
+| # | Item | Owner | Due |
+|---|------|-------|-----|
+| 1 | ... | ... | ... |
 
 ### Requirements
-Numbered list split by side:
 
-**FE Requirements**
-1. [requirement]
-
-**BE Requirements**
-1. [requirement]
+1. [requirement statement]
+2. [requirement statement]
 
 ### Open Questions
-Items that came up but were not resolved. Format: question + context + who needs to answer.
 
-## Rules
+1. [question] — flagged for follow-up
 
-- Extract only what was explicitly discussed — do not infer or expand
-- Mark ambiguous items as TBD in Open Questions
-- One requirement = one specific, actionable item
-- Reference specific fields, endpoints, or flows where mentioned
-- Write in English
+## Output destination
 
-## MCP path
+- Return as structured markdown by default
+- BA decides where to publish (Confluence specification page, Jira comment, etc.)
+- Optional: if BA requests + target Confluence page provided → publish via MCP
 
-After BA review:
-> Create a requirements page in Confluence.
-> Space: [space key]. Parent: [specification page].
-> Title: Requirements — [feature name].
-> Content: [paste approved output].
+## Behavior parameters
 
-## Fallback
+- Temperature: 0.2 (extraction, not creation)
+- Tone: factual, neutral
+- Anti-hallucination: strict — never invent decisions or requirements not in the source
 
-Output as markdown. BA copies into Confluence or Google Doc manually.
+## What this skill does NOT do
+
+- Does not decompose epics — use `/decompose-epic`
+- Does not write AC — use `/gherkin-ac` or `/ears-ac`
+- Does not split requirements by implementation area
