@@ -1,6 +1,6 @@
 # BAO AI-Native BA Framework
 
-Shared skills library and delivery framework for Business Analysts at Geniusse.
+Shared skills library and delivery framework for Business Analysts.
 
 ---
 
