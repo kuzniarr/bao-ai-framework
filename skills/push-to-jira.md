@@ -45,7 +45,7 @@ Context (read automatically from Project Knowledge):
 - Linked to the Confluence specification page
 - Ticket key and URL returned to the BA
 
-## Non-Cloud Jira fallback
+## MCP unavailable fallback
 
 If MCP is unavailable:
 

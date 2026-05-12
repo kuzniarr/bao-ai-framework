@@ -70,7 +70,7 @@ If pattern is missing or ambiguous in `00_quick_standards.md` — ask the BA bef
 
 - List of created subtask keys returned to the BA
 
-## Non-Cloud Jira fallback
+## MCP unavailable fallback
 
 If MCP is unavailable:
 
