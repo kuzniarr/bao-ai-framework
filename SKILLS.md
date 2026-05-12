@@ -12,6 +12,7 @@ Invoke in any Claude Project chat with `/skill-name`.
 | --- | --- | --- | --- | --- |
 | `/project-charter` | ✅ ready | 1 · Project Setup | Generates a Project Charter from kickoff notes. Output: `01_project_context.md` for Project Knowledge. | Kickoff notes → structured charter |
 | `/stakeholder-analysis` | ✅ ready | 1 · Project Setup | Generates a structured stakeholder map from the Project Charter. Output: `02_stakeholders.md`. | Need stakeholder map for a project |
+| `/tech-context` | ✅ ready | 1 · Project Setup | Generates technical project grounding: stack, integrations, architecture notes, glossary, constraints. Output: `03_tech_context.md`. | Need technical context for BA work |
 | `/ba-communication-plan` | ✅ ready | 1 · Project Setup | Generates a BA communication plan: meeting cadence, contact matrix, escalation path, approval process. | Need to define communication structure |
 | `/ba-governance` | ✅ ready | 1 · Project Setup | Generates a BA governance document: requirements management, change tracking, DoR, DoD, approval matrix. | Need to define governance approach |
 | `/elicitation-prep` | ✅ ready | 2 · Discovery | Generates a structured question list for a client meeting or workshop, grouped by topic and prioritized. | Preparing for a client session |
