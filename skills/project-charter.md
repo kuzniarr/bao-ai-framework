@@ -7,16 +7,15 @@ description: "Generate `01_project_context.md` for Project Knowledge from kickof
 
 Generate `01_project_context.md` as the foundational project context file for Project Knowledge. Use it as the baseline reference for future BA work on the project.
 
-## Input
+## Inputs
 
-Accept any of the following, alone or mixed:
-- PM kickoff message
-- Kickoff notes or transcript
-- WBS excerpts
-- Free-text project description
-- Onboarding notes from an existing project
+Any combination of:
+- Kickoff notes, PM Slack messages, free-text project description
+- Scope & Vision document (Google Doc, PDF, Confluence page)
+- WBS (Geniusee template or client-provided — epic/scope structure)
+- Architectural diagrams (PDF, screenshots — uploaded as images)
 
-The more context is provided, the fewer clarification questions are needed.
+On Geniusee delivery projects after discovery — S&V is the primary input, WBS provides scope structure.
 
 ## Procedure
 
@@ -116,6 +115,19 @@ Review before adding to Project Knowledge:
 - Do not invent delivery model, risks, users, or identifiers
 - Do not use generic filler text
 - Do not document communication cadence or governance here, those belong in separate skills
+
+## Handling large inputs
+
+- Scope & Vision can be 30-100+ pages. Do NOT copy the full S&V text into the charter.
+- Extract ONLY what belongs in a charter:
+ - Product context (1-2 paragraphs)
+ - Business goals (3-7 bullets)
+ - Scope highlights (in/out of scope — high level, NOT story-level)
+ - Key stakeholders (names, roles)
+ - Glossary anchors (5-10 key terms)
+ - Constraints and risks
+- WBS: extract epic list and phase structure, not stories.
+- If S&V section is ambiguous or contradictory — flag with `[TBD — clarify with PM/client]`. Do not paraphrase to hide uncertainty.
 
 ## Output
 
