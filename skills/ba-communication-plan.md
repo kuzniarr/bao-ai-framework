@@ -7,16 +7,20 @@ description: "Generate `comm_plan.md` for BA communication on a delivery project
 
 Generate `comm_plan.md` as the BA-specific communication plan for the project. Cover only communication activities where the BA is directly involved.
 
-## Input
+## Inputs
 
-Accept any of the following:
-- `01_project_context.md`
-- Kickoff notes or PM message
-- Known meeting schedule
-- Team structure and stakeholder roles
-- Client time zone or working-hours constraints
+- `01_project_context.md` (Project Knowledge)
+- `02_stakeholders.md` (Project Knowledge)
+- Scope & Vision document (team/delivery section, if available)
+- Kickoff agreements with PM (cadence, channels, escalation)
+- Client communication preferences (if stated)
 
-If no schedule exists yet, generate the standard Scrum cadence as a default and flag it for review.
+## Source priority
+
+1. Stakeholders file — for contact matrix
+2. S&V team/delivery section — for cadence and ceremony list
+3. PM agreements — for escalation path
+4. Project Charter — for context
 
 ## Procedure
 
