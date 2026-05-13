@@ -32,21 +32,45 @@ This skill acts directly in Confluence via Atlassian MCP, no copy-paste required
 
 ---
 
-## Input
+## Inputs
 
-```
-/confluence-specification-skeleton
-Epic: [Epic name]
-Space: [Confluence space key]
-Parent page: [Parent page name or ID — optional, defaults to space root]
-Description: [1–2 sentences about what this epic covers]
-```
+Mode parameter — **required**:
+- `single-epic` — create structure for one epic (existing behavior)
+- `all-epics` — read all epics from a Jira project via MCP, create structure for each (NEW)
 
-If space key or parent page is missing, ask before creating anything:
+Single-epic mode:
+- Epic name + brief description
+- Project context from Project Knowledge
 
-> "Which Confluence space should I create this in? And should it sit under a specific parent page, or at the space root?"
+All-epics mode:
+- Jira project key (skill reads epics via MCP)
+- Project context from Project Knowledge
+- Confluence parent space key
 
 ---
+
+## Output
+
+Single-epic mode:
+- One parent page in Confluence + skeleton sections under it
+
+All-epics mode:
+- Confluence parent page for the project (root)
+- Sub-page per epic (read from Jira)
+- Skeleton sections under each epic page: Overview, Goals, Scope, NFRs, Architecture, User Stories
+- Each epic page linked to corresponding Jira epic
+- Returns: list of created pages with URLs
+
+## Behavior rule — batch mode safety
+
+In all-epics mode:
+1. First, read all epics from Jira and present the list in chat
+2. Show BA the planned structure (parent + N epic pages)
+3. WAIT for confirmation before creating pages
+4. After confirmation — create pages sequentially, report progress (e.g. "5/12 epics done")
+5. If any page creation fails — stop, report which epics succeeded, ask BA how to proceed
+
+Do NOT create pages silently for large batches.
 
 ## Steps
 
