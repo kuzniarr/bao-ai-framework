@@ -7,17 +7,18 @@ description: "Generate `03_tech_context.md` for Project Knowledge from `01_proje
 
 Generate `03_tech_context.md` as the technical grounding file for the project. Use it to support technically accurate requirements writing, API mapping, integration work, and validation with the tech team.
 
-## Input
+## Inputs
 
-Accept any of the following:
-- `01_project_context.md`
-- Tech stack description
-- API documentation excerpts
-- Architecture notes or diagram descriptions
-- Existing glossary or domain terminology
-- Free-text input from a developer or tech lead
+- Architectural diagrams (PDF, screenshots — uploaded directly to Claude)
+- API specs (OpenAPI, Postman collections, Confluence pages)
+- Tech stack description (free text from tech lead or PM)
+- Existing tech docs from Confluence / Google Drive
 
-The skill works with partial information. Unknown values must be marked as `TBD`.
+## Handling diagrams
+
+- Screenshots: upload directly to chat — Claude reads images natively
+- PDF: extract key diagrams first (use /mnt or screenshot the relevant pages). Do NOT pass full multi-page PDFs.
+- For each diagram, capture: components, integration points, data flow direction. Reference diagram by name in output.
 
 ## Procedure
 
