@@ -1,3 +1,8 @@
+---
+name: ticket-refinement
+description: "Refine an existing Jira ticket into a ready-for-development state by aligning story format, Acceptance Criteria, and Definition of Ready fields. Use after WBS import or on incomplete tickets before refinement or sprint planning."
+---
+
 # Skill: /ticket-refinement
 
 ## Purpose

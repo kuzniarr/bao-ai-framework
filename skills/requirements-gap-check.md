@@ -1,3 +1,8 @@
+---
+name: requirements-gap-check
+description: "Run a cross-project scan of Confluence requirements and Jira tickets to find gaps, inconsistencies, duplicates, and orphaned items. Use before refinement, sprint planning, or milestone reviews."
+---
+
 # /requirements-gap-check
 
 ## What it does

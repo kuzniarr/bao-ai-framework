@@ -1,3 +1,8 @@
+---
+name: decompose-epic
+description: "Decompose an epic or large story into smaller independent vertical user stories using INVEST principles. Use when breaking approved scope into implementation-ready stories."
+---
+
 # /decompose-epic
 
 ## Purpose

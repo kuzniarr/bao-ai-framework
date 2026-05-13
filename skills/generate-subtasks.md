@@ -1,3 +1,8 @@
+---
+name: generate-subtasks
+description: "Break a Jira Story into Subtasks using the project Task Split Pattern from `00_quick_standards.md`. Use after a story is in Jira and the team needs implementation-level work items."
+---
+
 # /generate-subtasks
 
 ## Purpose

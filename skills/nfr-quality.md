@@ -1,3 +1,8 @@
+---
+name: nfr-quality
+description: "Generate or validate Non-Functional Requirements using ISO 25010 quality attributes and Utility Tree thinking. Use when defining measurable NFRs or reviewing existing NFR quality for a feature, epic, or system."
+---
+
 # /nfr-quality
 
 ## What it does

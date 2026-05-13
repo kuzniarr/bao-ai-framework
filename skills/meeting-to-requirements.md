@@ -1,3 +1,8 @@
+---
+name: meeting-to-requirements
+description: "Convert a meeting transcript or raw session notes into structured decisions, action items, requirements, and open questions. Use after discovery, refinement, or client meetings to create implementation-agnostic requirement output."
+---
+
 # /meeting-to-requirements
 
 ## Purpose

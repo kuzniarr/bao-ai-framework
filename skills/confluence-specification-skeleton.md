@@ -1,9 +1,6 @@
 ---
 name: confluence-specification-skeleton
-trigger: /confluence-specification-skeleton
-phase: 3 · Requirements & Modelling
-tags: [SKILL, MCP]
-output: Confluence page structure — parent page + child sections created via Atlassian MCP
+description: "Create a Confluence specification skeleton for one epic or all epics in a Jira project, with placeholder sections for overview, goals, scope, NFRs, architecture, and user stories. Use before detailed requirements writing."
 ---
 
 # Confluence Specification Skeleton

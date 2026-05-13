@@ -1,3 +1,8 @@
+---
+name: ac-validation
+description: "Review Acceptance Criteria for one or more user stories against completeness and quality standards. Use when checking happy path, alternative flows, edge cases, error states, and AC quality without rewriting the AC."
+---
+
 # /ac-validation
 
 ## What it does

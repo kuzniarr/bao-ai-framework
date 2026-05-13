@@ -1,8 +1,6 @@
 ---
 name: elicitation-prep
-trigger: /elicitation-prep
-phase: 2 · Discovery & Elicitation
-output: questions_list.md — ready to use in the meeting or share with client
+description: "Generate a structured elicitation question list for project-wide, epic, sprint, or topic-specific scope using Project Knowledge and optional source artifacts. Use before client meetings, discovery calls, or refinement sessions."
 ---
 
 # Elicitation Prep

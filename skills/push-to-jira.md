@@ -1,3 +1,8 @@
+---
+name: push-to-jira
+description: "Create a Jira Story ticket from an approved user story with acceptance criteria. Use when moving a finalized story from specification into Jira without creating subtasks yet."
+---
+
 # /push-to-jira
 
 ## Purpose

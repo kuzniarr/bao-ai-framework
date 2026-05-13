@@ -1,3 +1,8 @@
+---
+name: sprint-zero-plan
+description: "Generate `sprint_zero_plan.md` as the working plan for Sprint 0, covering priorities, prep work, design-first epics, client open questions, and milestones before the full team joins."
+---
+
 # Skill: /sprint-zero-plan
 
 ## Purpose

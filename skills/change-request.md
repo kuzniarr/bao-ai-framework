@@ -1,3 +1,8 @@
+---
+name: change-request
+description: "Process a scope change into a structured Change Request with impact analysis, Jira registration, and communication drafts. Use when a new request falls outside agreed scope or changes existing functionality after baseline."
+---
+
 # /change-request
 
 ## What it does

@@ -1,9 +1,6 @@
 ---
 name: traceability-matrix
-trigger: /traceability-matrix
-phase: 4 · Jira & Traceability
-tags: [SKILL, MCP]
-output: traceability-matrix.xlsx — full project coverage table with progress
+description: "Build a traceability and progress matrix from Jira data in xlsx format to show epic, story, subtask, status, and progress coverage. Use for project progress snapshots, coverage reviews, and sprint reporting."
 ---
 
 # Traceability Matrix

@@ -1,3 +1,8 @@
+---
+name: brd-generation
+description: "Generate a Business Requirements Document (BRD) from meeting notes, stakeholder input, Jira stories, or existing documents. Use when documenting a feature, epic, or project phase for formal review or sign-off."
+---
+
 # /brd-generation
 
 ## What it does

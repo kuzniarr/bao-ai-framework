@@ -1,3 +1,8 @@
+---
+name: quick-standards
+description: "Generate `00_quick_standards.md` as the project reference for story format, AC format, DoR, DoD, Task Split Pattern, naming conventions, and glossary anchors. Use during setup or when standards change mid-project."
+---
+
 # Skill: /quick-standards
 
 ## Purpose
