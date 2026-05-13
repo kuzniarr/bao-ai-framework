@@ -22,27 +22,25 @@ Reads project context from Project Knowledge automatically. Add the meeting topi
 
 ---
 
-## Input
+## Inputs
 
-**With topic (recommended):**
-```
-/elicitation-prep X Ads connection flow
-/elicitation-prep kickoff
-/elicitation-prep Free Package feature
-```
+- Project context (auto-read from Project Knowledge)
+- Scope parameter — **required**:
+ - `project-wide` — general gaps across full project
+ - `epic:<epic-name>` — questions specific to one epic
+ - `sprint:<sprint-id>` — questions for upcoming sprint scope
+ - `topic:<topic>` — focused topic (e.g. payments, auth)
+- Optional source artifacts: S&V section, WBS epic rows, Confluence page URL
 
-**Without topic:**
-Invoke `/elicitation-prep` with no context, Claude asks one question before generating:
+## Output filename pattern
 
-> "What is the topic or focus of this session? Provide a feature name, epic, integration, or say 'kickoff' for a general project session."
+`questions_list_<scope>.md`
 
-**Optional additions**, paste any of the following if available:
-- Meeting agenda
-- Epic or feature description
-- Designs or mockup notes
-- List of known open questions
-
-The more context provided, the more targeted the questions.
+Examples:
+- `questions_list_project_wide.md`
+- `questions_list_epic_user_management.md`
+- `questions_list_sprint_3.md`
+- `questions_list_topic_payments.md`
 
 ---
 
@@ -84,56 +82,27 @@ After the question list, add a short section:
 
 ---
 
-## Output Template
+## Output
+
+Markdown file named per pattern above. Structure:
 
 ```markdown
-# Elicitation Questions — [Topic]
-_Session type: [Kickoff / Feature discovery / Integration / Refinement]_
-_Prepared: [date]_
+# Elicitation Questions — <scope>
 
-## Session Goals
-[1–3 sentences: what we need to walk away with from this session]
+## Context
+<1-2 sentences — what scope these questions cover>
 
-## Expected Output
-[What artifact or decision comes out: requirements list, scope confirmation,
-open questions resolved, etc.]
+## Questions by topic
 
----
+### <Topic 1>
+1. <question> — priority: <high/med/low>
+2. ...
 
-## Questions
+### <Topic 2>
+...
 
-### [Topic Group 1 — e.g. Connection Flow]
-
-| # | Question | Priority | Notes |
-|---|---|---|---|
-| 1 | [Question] | `MUST` | [Why this is blocking] |
-| 2 | [Question] | `GOOD TO HAVE` | |
-| 3 | [Question] | `ASYNC OK` | [Can send via Slack after] |
-
-### [Topic Group 2 — e.g. Error Handling]
-
-| # | Question | Priority | Notes |
-|---|---|---|---|
-| 1 | [Question] | `MUST` | |
-
-### [Topic Group 3 — e.g. Permissions & Roles]
-
-| # | Question | Priority | Notes |
-|---|---|---|---|
-| 1 | [Question] | `MUST` | |
-
----
-
-## Session Prep
-
-**Who should attend:**
-- [Role from stakeholder map] — [why needed]
-
-**Send to client beforehand (optional):**
-- [Design link / doc / specific question to think about]
-
-**Open questions from previous sessions (if any):**
-- [Carry-over questions not yet resolved]
+## Open assumptions
+<things skill assumed when generating — BA should validate>
 ```
 
 ---
