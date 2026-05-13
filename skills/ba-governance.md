@@ -7,14 +7,19 @@ description: "Generate `governance.md` for BA governance on a delivery project u
 
 Generate `governance.md` as the BA governance baseline for how requirements are prioritized, approved, changed, and considered ready or done on the project.
 
-## Input
+## Inputs
 
-Accept any of the following:
-- `01_project_context.md`
-- Team structure and roles
-- Known tools such as Jira, Confluence, Slack
-- Existing agreements on prioritization, approvals, or change control
-- Existing DoR or DoD if already defined
+- `01_project_context.md` (Project Knowledge)
+- Scope & Vision (delivery approach section, governance section if exists)
+- WBS (phases — used for phase-based DoD)
+- Client expectations from kickoff or S&V
+- Geniusee BA standards (default fallback)
+
+## Source priority
+
+1. Client-stated governance rules (S&V, kickoff) — override everything
+2. WBS phase structure — defines phase-based DoD
+3. Geniusee BA defaults — fallback for unspecified items
 
 If a governance rule is not known yet, generate a sensible default and clearly flag it for validation.
 
@@ -177,6 +182,14 @@ A story is done when:
 
 > ⚠ Align this list with dev + QA team before use.
 ```
+
+## Behavior rule — phase-based DoD
+
+If WBS has phase structure (MVP / Phase 1 / Phase 2 / etc):
+- Generate per-phase DoD section
+- Each phase DoD may differ (e.g. MVP: no perf testing; Phase 2: includes load testing)
+
+If WBS has no phases — generate single DoD for the project.
 
 ## Rules
 
