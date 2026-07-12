@@ -17,21 +17,20 @@ When the BA wants to break a WBS epic into implementation-ready stories, before 
 
 The BA names the epic. Read these automatically.
 
-1. **WBS** — `/mnt/project/WBS_Scope_only_1.xlsx`, sheet **`WBS & Development Efforts`**.
-   - Header is on **row 3**. Relevant columns: `Topic` (A), `User Story` (B), `Acceptance Criteria` (C), `Phase` (J).
+1. **WBS** — `/mnt/project/WBS_Change_Impact_Scope_only.xlsx`, sheet **`WBS & Development Efforts`**.
+   - Header is on **row 3**. Relevant columns: `Topic` (A), `User Story` (B), `Acceptance Criteria` (C), `Phase` (I).
    - An **epic** = a `Topic` header row (the UPPERCASE name, e.g. `USER REGISTRATION`) followed by its **parent-story rows** (each with a `User Story` value) until the next Topic header.
    - From each parent-story row take: the parent **story title** (the short `Topic`/`User Story` name), its **raw AC** (`Acceptance Criteria`), and `Phase`.
    - Extract with code, e.g.:
      ```python
      import openpyxl
-     wb = openpyxl.load_workbook('/mnt/project/WBS_Scope_only_1.xlsx', data_only=True)
+     wb = openpyxl.load_workbook('/mnt/project/WBS_Change_Impact_Scope_only.xlsx', data_only=True)
      ws = wb['WBS & Development Efforts']
      # from row 4: an UPPERCASE Topic with empty User Story = epic header;
      # the rows after it (Topic = short story name, User Story populated) are its parent stories,
      # up to the next header.
      ```
-2. **Product Context** — `/mnt/project/Product_Context_actual.md`. The authoritative source for content. Read it as a whole: for every story search the entire document — a rule relevant to the story may live in any section, not only the one matching the epic's name. Where the Product Context and the WBS raw AC conflict, the Product Context wins.
-3. **Standards** — `/mnt/project/04_standards_file.md` for the story format and DoR expectations.
+2. **Product Context** — `/mnt/project/Product_Context.md`. The authoritative source for content. Read it as a whole: for every story search the entire document — a rule relevant to the story may live in any section, not only the one matching the epic's name. Where the Product Context and the WBS raw AC conflict, the Product Context wins.
 
 ## Process
 
@@ -53,6 +52,8 @@ Group every resulting story under its parent WBS story title (this grouping is t
   4. **Data Variations**.
   5. **Data Entry Methods (UI)**.
 - When a candidate child is trivial or naturally belongs inside another, raise it as a **Split flag** for the BA to decide (e.g. "auto-redirect to welcome page could fold into the first story").
+- **Create is not View.** Keep a create/add action and a view/list action as separate vertical slices — never fold one into the other, even when they share a screen.
+- **Branch complexity is a split smell.** If a single `want` pulls in many conditions, exceptions, or role/branch variations, the split is probably too coarse — re-split, so each story stays one clean intention. (These conditions become AC downstream; catching them here keeps AC short.)
 - **Shared steps → one canonical story.** When the same behaviour recurs across several flows in the epic (e.g. consent to Terms, email verification), create **one** canonical story for it and have the other flows reference it as an AC step — never duplicate it as a child in each flow. (This catches duplicates born *inside* the decomposition, not only duplicates of another WBS parent story.)
 
 ## Story statement rules
@@ -71,6 +72,7 @@ WBS stories are written generically as `As a User`. Resolve the real role from t
 - If behaviour differs by role, split into separate stories per role (Business Rule Variation).
 - If behaviour is the same across roles, write **one** story naming the roles together: `As a System Admin and Admin, I want …`.
 - One role-context per story otherwise.
+- **Same action — same actor.** An identical action takes the same role(s) wherever it appears; a different actor for the same action is either a genuine business-rule variation (split by role) or an inconsistency to resolve — not a silent mismatch.
 - If the correct role cannot be determined from the WBS and Product Context, write the role as `TBD` and list it under Gaps.
 
 ## Gaps & conflicts
@@ -84,7 +86,7 @@ Surface these for BA review rather than resolving them silently:
 
 ## Anti-hallucination
 
-- Use only the epic's WBS rows, the Product Context, and the standards. Introduce no roles, entities, flows, or fields that are not there.
+- Use only the epic's WBS rows and the Product Context. Introduce no roles, entities, flows, or fields that are not there.
 - Anything unknown or unclear → `TBD`, listed under Gaps.
 - Use only Product Context glossary terminology.
 
@@ -113,3 +115,8 @@ As a <role>, I want <action>, so that <benefit>.
 ```
 
 Return as markdown.
+
+
+Elicitation-prep
+
+---

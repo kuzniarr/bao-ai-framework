@@ -1,6 +1,6 @@
 ---
 name: ears-ac
-description: "Write Acceptance Criteria in EARS for an approved user story, in the project house style: numbered criteria grouped by meaning, a Data Dictionary for forms, one design link per story, and the story's open questions beneath it. Presentation follows the reader's experience; a coverage pass plus a state-reachability filter mean no real case is missed and no unreachable one is invented. Uses must (not shall); bold block and group headers, TBD as a code chip. Complete on behaviour, free of ceremony. Source of truth is the current Product Context. Use after stories are decomposed and approved, before refinement."
+description: "Write Acceptance Criteria in EARS for an approved user story, in the project house style: numbered criteria grouped by meaning, a Data Dictionary for forms, one design link per story, a Surface note (per Product Context §2.4) per story, and the story's open questions beneath it. Presentation follows the reader's experience; a coverage pass plus a state-reachability filter mean no real case is missed and no unreachable one is invented. Uses must (not shall); bold block and group headers, TBD as a code chip. Complete on behaviour, free of ceremony. Source of truth is the current Product Context. Use after stories are decomposed and approved, before refinement."
 ---
 
 # /ears-ac
@@ -16,10 +16,9 @@ After stories are decomposed and approved (decompose-wbs-epic), to write their A
 # Inputs
 
 1. The approved story/stories — each with its statement and parent WBS reference.
-2. Product Context — /mnt/project/Product_Context_actual.md. The authoritative source. Read the **current** document as a whole and reconcile **every** criterion against it — a rule, value, message, role, or state relevant to the story may live in any section, not only the one matching the epic's name. Do not rely on memory of an earlier version. Where the Product Context and the WBS raw AC differ, the Product Context is the resolved state — raise the difference as an open question. Write `TBD` only after a full pass over the current Product Context finds nothing.
+2. Product Context — /mnt/project/Product_Context.md. The authoritative source. Read the **current** document as a whole and reconcile **every** criterion against it — a rule, value, message, role, or state relevant to the story may live in any section, not only the one matching the epic's name. Do not rely on memory of an earlier version. Where the Product Context and the WBS raw AC differ, the Product Context is the resolved state — raise the difference as an open question. Write `TBD` only after a full pass over the current Product Context finds nothing.
 3. Flowcharts / designs — the design-level source for behaviour and screen names; concrete values seen on a mockup (e.g. code length, expiry) are real input, not guesses.
 4. WBS — the parent story's raw AC as a seed.
-5. Standards — /mnt/project/04_standards_file.md.
 
 # EARS patterns
 
@@ -89,12 +88,14 @@ When information is missing, do not make it up.
 
 # Output — one block per story
 
-Block and group headers in **bold**; the design link given once near the top, never per criterion; every `TBD` written as `` `TBD` `` code chip.
+Block and group headers in **bold**; the design link given once near the top, never per criterion; every `TBD` written as a `` `TBD` `` code chip.
 
 ```
 **Story:** As a <role>, I want <action>, so that <benefit>.
 
 **Design:** <one Figma link, or several if the story spans screens>
+
+**Surface:** <one-line note per actor, from Product Context §2.4 — e.g. `User front-end (Group Owner, Group Leader)`; use only approved surfaces, never invent>
 
 **Pre-conditions:** <only for a state-driven flow that needs them>
 
@@ -121,6 +122,10 @@ Block and group headers in **bold**; the design link given once near the top, ne
 1. <one atomic question; propose a default where sensible>
 ```
 
+# Surface
+
+- **Surface note — mandatory, one per story.** Every story carries a one-line Surface note directly under Design, naming the surface(s) it renders on, scoped per actor. Use only the approved surfaces defined in Product Context §2.4 (Admin panel / User front-end, plus the External and none qualifiers); never invent a new surface.
+
 # Acceptance Criteria rules
 
 - **Numbered markdown lists, continuous across the story.** Plain `1. 2. 3.`, one criterion per line. The counter runs continuously through all Acceptance Criteria groups (e.g. Sign-up 1-3, then Validation 4-8) so every criterion has a unique number; reference a criterion by that number. Group headings organise the list but do not reset the count. Related stories, Out of Scope, and Open Questions are each their own list, numbered from 1.
@@ -128,9 +133,11 @@ Block and group headers in **bold**; the design link given once near the top, ne
 - **One shared outcome -> one criterion with listed sub-conditions.** `Verification error — The system must show a verification error if: 1) the code is invalid; 2) the code is expired.`
 - **Behaviour / goal, not UI.** State what the system does or the outcome, never the interface — no controls, colours, menus, or widget names, and no "the system displays the field/selector/screen". A screen is named in prose only where needed to disambiguate, with no inline link.
 - **Atomic and explicit.** One requirement per criterion; enumerate roles/values/branches explicitly; never let "or / and / but" mask several requirements or hide ambiguity.
+- **No vague verbs.** A criterion states exactly what is and is not allowed — never a blanket "restrict / manage / handle / control". If a user is limited, spell out precisely what they can and cannot do (e.g. not "restrict a banned user from posting" but "a banned user cannot publish articles or comments; existing posts stay visible").
 - **Testable and measurable.** No vague "fast", "user-friendly". Give a concrete value/limit or mark `TBD`.
 - **No meta criteria.** Do not write a criterion that just points at the Data Dictionary ("validate the fields per the table") — the table plus a single "outside its accepted information" criterion cover it.
 - **Behaviour belongs in criteria.** If any line describes what the system does, it is a numbered criterion — never prose in the Story preamble or anywhere else. Every piece of content has one home: behaviour -> a criterion; an excluded/Future-Phase item -> Out of Scope; a part of the flow owned elsewhere -> Related stories; a scope condition -> a clause inside the criterion it qualifies (`Where the flow is B2C, ...`). There is no catch-all "Note" block.
+- **No inline cross-references.** A criterion never points to a sibling story inline (no `-> see <story>` beside a criterion). A part of the flow, rule, or behaviour owned by another story or PC section is referenced only in the Related stories block — never duplicated as a criterion here.
 
 # Optional elements — only when they add clarity, never empty
 
@@ -153,7 +160,7 @@ Block and group headers in **bold**; the design link given once near the top, ne
 
 # Anti-hallucination
 
-- AC content comes only from the approved story, the current Product Context, the flowcharts/designs, the WBS seed, and the standards. Introduce no field, message, role, branch, or rule that is not there.
+- AC content comes only from the approved story, the current Product Context, the flowcharts/designs, and the WBS seed. Introduce no field, message, role, branch, or rule that is not there.
 - Anything unknown or unclear -> `` `TBD` `` plus an Open-Questions line, or a proposed criterion marked `(proposed — confirm)`. Never present a guess as decided.
 
 # Example (abridged)
@@ -162,6 +169,8 @@ Block and group headers in **bold**; the design link given once near the top, ne
 **Story:** As a Learner, I want to provide my sign-up details, so that I can create an account.
 
 **Design:** Figma — Sign-Up
+
+**Surface:** User front-end (unauthenticated)
 
 **Acceptance Criteria**
 
@@ -195,3 +204,16 @@ Block and group headers in **bold**; the design link given once near the top, ne
 1. Validation trigger timing: on submit, on field blur, or live? Proposed: validate on blur, re-check on submit, block submit until valid.
 2. Provide the password security policy (min length, complexity, max length, breach check, weak-password message). Until defined, Password stays `TBD`.
 ```
+
+
+# Final gate — run mechanically before delivering (never skip on large batches)
+
+Before delivering a story's AC, verify each — fix the output until all pass:
+1. Numbering is continuous across all AC groups (groups organise, never reset the counter); Related stories / Out of Scope / Open Questions each restart at 1.
+2. A **Surface:** line is present under Design.
+3. Data Dictionary present if the story has a form with field-level rules; no field captured in the table is repeated in the criteria.
+4. Every `TBD` is a code chip and has a matching Open Question.
+5. Every `(proposed — confirm)` has a matching Open Question; no orphan tag.
+6. No related-story reference appears inline in a criterion — sibling-owned flow lives only in the Related stories block.
+7. No NFR (how fast / how many / under what load) is written as a functional criterion.
+8. Each criterion is atomic — no or/and hiding multiple requirements or branches.

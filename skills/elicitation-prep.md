@@ -28,7 +28,7 @@ Reads project context from Project Knowledge automatically. Add the meeting topi
  - `epic:<epic-name>` — questions specific to one epic
  - `sprint:<sprint-id>` — questions for upcoming sprint scope
  - `topic:<topic>` — focused topic (e.g. payments, auth)
-- Optional source artifacts: S&V section, WBS epic rows, Confluence page URL
+- Optional source artifacts: S&V section, WBS epic rows, Notion page URL
 
 ## Output filename pattern
 
@@ -46,7 +46,7 @@ Examples:
 
 **Step 1, Read project context**
 
-Read `01_project_context.md`, `02_stakeholders.md`, `03_tech_context.md` from Project Knowledge. Extract:
+Read `Project_Context___Change_Up_Learning.md`, `02_stakeholders_file.md`, `Tech_Context_file__1_.md` from Project Knowledge. Extract:
 - Product domain and goals
 - Scope boundaries (what's in, what's out)
 - Relevant stakeholders for this session
@@ -75,8 +75,25 @@ Generate questions grouped by topic. For each group:
 
 After the question list, add a short section:
 - What to prepare or send to the client beforehand (if anything)
-- Who should be in the room (based on `02_stakeholders.md`)
+- Who should be in the room (based on `02_stakeholders_file.md`)
 - What the expected output of this session is
+
+---
+
+## Writing each question
+
+The list structure (grouping, priority, MUST tags) is set in Step 3; these rules govern how each individual question is worded. **This block is shared verbatim with `open-questions-per-epic` — edit both together.**
+
+- **One clear goal per question.** Before writing, know the answer you want — a specific detail or a broad picture — and how the client could realistically answer; write for that answer, not for the wording.
+- **Strip all filler.** If a word can be removed without changing the meaning, remove it. Clear and short, grasped in one pass.
+- **Show your stance.** The question must reveal where you stand on the requirement — understand / clarifying / challenging. Never ask as if you don't know what you already know, or the reverse.
+- **Context first, only where needed.** If the question needs setup, give one or two sentences of context before the ask; if it's self-evident, just ask.
+- **Think from every angle.** Form the question considering the user, the admin, and the system (is the list static? how is it managed from the admin side?), not only the user-facing view.
+- **Propose a default or offer alternatives.** Where a sensible default or a small set of options exists, include it so the question becomes a fast yes/no or pick-one rather than an open field.
+- **Atomic.** One decision per question, so each can be answered and closed independently.
+- **Don't fear "dumb" questions.** Better to ask about the simple than to miss the complex — no one else validates this.
+
+List-level rules (number and separate each question, order most-blocking-first, surface the full set at once rather than drip-feeding) are handled in Step 3.
 
 ---
 
@@ -137,3 +154,10 @@ When session type is **kickoff**, always include question groups for:
 3. Share with client beforehand if helpful (`MUST` questions only)
 4. Use as a live checklist during the session
 5. After the session, feed outputs into `/meeting-to-requirements`
+
+
+
+Open-questions-per-epic
+
+
+---
